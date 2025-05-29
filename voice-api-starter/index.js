@@ -1,14 +1,13 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const port = process.env.PORT || 8080;
+
 app.use(express.json());
 
-const PORT = process.env.PORT || 8080;
-
-app.post('/', (req, res) => {
-  const name = req.body.name || 'Stranger';
-  res.json({ message: `Hello, ${name}` });
+app.post("/", (req, res) => {
+  res.send({ message: `Hello ${req.body.name || "world"}` });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
